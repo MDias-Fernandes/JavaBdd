@@ -1,0 +1,48 @@
+package commonsMethods;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.junit.Before;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CommonsWebDriver {
+	
+	static ChromeDriver DRIVER;
+	
+	@Before
+	public static ChromeDriver initializeDriver() {
+		DRIVER = new ChromeDriver();
+		return DRIVER;	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void getUrl(String url) {
+		DRIVER.get(url);
+	}
+	
+	
+	public static void validateWindowTextTitle(String expected) {
+		String actualWindowTitle = DRIVER.getTitle();
+		assertEquals(actualWindowTitle, expected);
+	}
+	
+	
+	@After
+	public static void closeWindow() {
+		DRIVER.quit();
+	}
+	
+}

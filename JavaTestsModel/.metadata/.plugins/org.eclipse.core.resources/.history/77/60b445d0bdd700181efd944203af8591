@@ -1,0 +1,9 @@
+users:
+   gdn:
+      nome: 'ana'
+      login: '11232633'
+      password: 'senha123'
+   gdn:
+      nome: 'paula'
+      login: '26454319'
+      password: 'senha123'

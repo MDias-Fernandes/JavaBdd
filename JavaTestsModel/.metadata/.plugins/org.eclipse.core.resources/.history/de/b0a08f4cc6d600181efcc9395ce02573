@@ -1,0 +1,59 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import commonsMethods.CommonsWebDriver;
+
+public class ConsultoriaTelaPrincipalPages {
+	
+	static By profileIcon 				= By.xpath("//div[starts-with(@class, 'HeaderTop__AvatarLink')]");
+	static By logoNatura 				= By.cssSelector("img[title='Natura']");
+	static By homeText 					= By.xpath("//div[starts-with(@class,'HeaderTop__Section')][contains(text(), 'Home')]");
+	static By newRegister 				= By.xpath("//span[contains(text(), 'Novo cadastro')]");
+	static By newOrder 					= By.xpath("//span[contains(text(), 'Novo Pedido')]");
+	static By indicators 				= By.xpath("//span[contains(text(), 'Indicadores')]");
+	static By promotions 				= By.xpath("//span[contains(text(), 'Promoções')]");
+	static By myNetwork 				= By.xpath("//span[contains(text(), 'Minha Rede')]");
+	static By slider					= By.cssSelector("div[class='slider-frame']");
+	static By sendNewMessage 			= By.xpath("//div[starts-with(@class, 'SendMessageCard__Wrapper')]");
+	static By menuMyRegisters 			= By.xpath("//div[contains(text(), 'Meus Cadastros')]");
+	static By submenuSuggestedForStart 	= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Sugeridas para início')]");
+	static By submenuWaitForFirstOrder 	= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Aguardando 1° pedido')]");
+	static By submenuInicial 			= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Inícios')]");
+	static By submenuReprovedAbandon	= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Reprovados/ Desistência')]");
+	static By submenuAllRegisters 		= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Todos os cadastros')]");
+	static By submenuNewRegister 		= By.xpath("//div[starts-with(@style,'display: flex;')][contains(text(), 'Novo cadastro')]");
+	static By footerLogo				= By.xpath("//div[starts-with(@class, 'Footerstyles__Logo')]");
+	static By footerSocial				= By.xpath("//div[starts-with(@class, 'Footerstyles__Social')]");
+	static By footerBottomSection		= By.xpath("//div[starts-with(@class, 'Footerstyles__BottomSection')]");
+	static By footerStores				= By.xpath("//div[starts-with(@class, 'Footerstyles__Stores')]");
+	static By footerUpperSection		= By.xpath("//div[starts-with(@class, 'Footerstyles__UpperSection')]");
+	static By footerElements			= By.xpath("//div[starts-with(@class, 'Footerstyles')]");
+	
+	public static void elementsVisibilityOnHeader() {
+		CommonsWebDriver.sleepAndFindElement(1, profileIcon);
+		CommonsWebDriver.sleepAndFindElement(1, logoNatura);
+		CommonsWebDriver.sleepAndFindElement(1, homeText);
+		CommonsWebDriver.sleepAndFindElement(1, newRegister);
+	}
+	
+	public static void sliderVisibility() {
+		CommonsWebDriver.sleepAndFindElement(1, slider);
+	}
+	
+	public static void boxSendNewMessage() {
+		CommonsWebDriver.sleepAndFindElement(1, sendNewMessage);
+	}
+	
+	public static void footerElements() {
+		CommonsWebDriver.sleepAndFindArrayOfElements(1, footerElements);
+		/*
+		CommonsWebDriver.sleepAndFindElement(1, footerLogo);
+		CommonsWebDriver.sleepAndFindElement(1, footerSocial);
+		CommonsWebDriver.sleepAndFindElement(1, footerBottomSection);
+		CommonsWebDriver.sleepAndFindElement(1, footerStores);
+		CommonsWebDriver.sleepAndFindElement(1, footerUpperSection);
+		*/
+	}
+	
+}

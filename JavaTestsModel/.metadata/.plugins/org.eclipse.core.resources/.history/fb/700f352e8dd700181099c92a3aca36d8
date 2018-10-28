@@ -1,0 +1,25 @@
+package commonsMethods;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pages.*;
+
+public class CommonsSteps {
+	
+	@Given("^acesso a pagina principal do app Consultoria$")
+	public void acesso_a_pagina_principal_do_app_Consultoria() throws Throwable {
+		CommonsWebDriver.getUrl("https://consultoriahml.natura.com.br");
+	    CommonsWebDriver.validateWindowTextTitle(90, "Natura - Acesso Seguro");
+	}
+	
+	@When("^clico no botao Login$")
+	public void clico_no_botao_Login() throws Throwable {
+		ConsultoriaLoginPages.clickLogin();
+	}
+	
+	@Then("^fecho a pagina$")
+	public void fecho_a_pagina() throws Throwable {
+		CommonsWebDriver.closeWindow();
+	}
+}

@@ -1,0 +1,80 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.*;
+
+public class ConsultoriaCadastroPages {
+	
+	static ChromeDriver DRIVER;
+	static By userLoginField = By.id("username");
+	static By newRegister = By.xpath("//span[contains(text(),'Novo cadastro')]");
+	static By cpfField = By.id("cpf");
+	static By completeName = By.id("name");
+	static By genderField = By.cssSelector("div[class='Select-placeholder']");
+	static By bornDate = By.id("birthday");
+	static By email = By.id("name");
+	static By phoneNumber = By.id("phone");
+	static By cep = By.id("deliveryAddressZipCode");
+	static By unknownCep = By.cssSelector("a[href='http://www.buscacep.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm']");
+	static By nextScreenOne = By.cssSelector("//span[contains(text(),'Voltar')]");
+	static By backScreenOne = By.cssSelector("//span[contains(text(),'Próximo')]");
+	
+	public static void newRegister() {
+		DRIVER.findElement(newRegister).clear();
+		DRIVER.findElement(newRegister).click();
+	}
+	
+	public static void setCpf(String cpf) {
+		DRIVER.findElement(cpfField).clear();
+		DRIVER.findElement(cpfField).sendKeys(cpf);
+	}
+	
+	public static void setCompleteName(String name) {
+		DRIVER.findElement(completeName).clear();
+		DRIVER.findElement(completeName).sendKeys(name);
+	}
+	
+	public static void selectGender() {
+		DRIVER.findElement(genderField).clear();
+		Select dropGender = new Select(DRIVER.findElement(genderField));
+		dropGender.selectByIndex(1);
+	}
+	
+	public static void bornDate(String bornDateParam) {
+		DRIVER.findElement(bornDate).clear();
+		DRIVER.findElement(bornDate).sendKeys(bornDateParam);
+	}
+	
+	public static void setEmail(String emailString) {
+		DRIVER.findElement(email).clear();
+		DRIVER.findElement(email).sendKeys(emailString);
+	}
+	
+	public static void setphoneNumber(String phone) {
+		DRIVER.findElement(phoneNumber).clear();
+		DRIVER.findElement(phoneNumber).sendKeys(phone);
+	}
+	
+	public static void setCep(String cepNumber) {
+		DRIVER.findElement(cep).clear();
+		DRIVER.findElement(cep).sendKeys(cepNumber);
+	}
+	
+	public static void nextScreen() {
+		DRIVER.findElement(nextScreenOne).click();
+	}
+	
+	public static void backScreen() {
+		DRIVER.findElement(backScreenOne).click();
+	}
+	
+	public static void unknownCepLink() {
+		DRIVER.findElement(unknownCep).click();
+	}
+	
+	public static void waitForValidation() {
+		Thread.sleep(5000);
+	}
+	
+}

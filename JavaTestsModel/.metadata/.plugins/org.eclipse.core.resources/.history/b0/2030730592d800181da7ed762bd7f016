@@ -1,0 +1,22 @@
+package stepsDefinition;
+
+import cucumber.api.java.en.When;
+import pages.ConsultoriaMenuMeusCadastrosPages;
+
+public class ConsultoriaMenuCadastro {
+	@When("^acesso o menu Meus Cadastros$")
+	public void acesso_o_menu_Meus_Cadastros() throws Throwable {
+	    ConsultoriaMenuMeusCadastrosPages.myRegisters();
+	}
+	
+	@When("^valido o submenu Sugeridas para Inicio$")
+	public void valido_o_submenu_Sugeridas_para_Inicio() throws Throwable {
+		ConsultoriaMenuMeusCadastrosPages.submenuSuggestedForStart();
+	}
+	
+	@When("^o titulo da janela muda para Meus Cadastros$")
+	public void o_titulo_da_janela_muda_para_Meus_Cadastros() throws Throwable {
+		ConsultoriaMenuMeusCadastrosPages.screenTitleSuggestedForStart();
+	}
+	
+}

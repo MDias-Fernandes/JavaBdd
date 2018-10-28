@@ -1,0 +1,68 @@
+package pages;
+
+import org.openqa.selenium.By;
+import commonsMethods.*;
+
+public class ConsultoriaCadastroPages {
+	
+	//static By userLoginField = By.id("username");
+	static By newRegister = By.xpath("//span[contains(text(),'Novo cadastro')]");
+	static By cpfField = By.id("cpf");
+	static By completeName = By.id("name");
+	static By genderField = By.cssSelector("div[class='Select-placeholder']");
+	static By bornDate = By.id("birthday");
+	static By email = By.id("email");
+	static By phoneNumber = By.id("phone");
+	static By cep = By.id("deliveryAddressZipCode");
+	static By unknownCep = By.cssSelector("a[href='http://www.buscacep.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm']");
+	static By nextScreenOne = By.cssSelector("//span[contains(text(),'Voltar')]");
+	static By backScreenOne = By.cssSelector("//span[contains(text(),'Próximo')]");
+	
+	public static void newRegister() {
+		CommonsWebDriver.sleepAndFindElement(5, newRegister).click();
+	}
+	
+	public static void setCpf(String cpf) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, cpfField).sendKeys(cpf);
+	}
+	
+	public static void setCompleteName(String name) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, completeName).sendKeys(name);
+	}
+	
+	public static void selectGender() throws InterruptedException {
+		Thread.sleep(1000);
+		//Select dropGender = new Select(CommonsWebDriver.DRIVER.findElement(genderField));
+		//dropGender.selectByIndex(1);
+	}
+	
+	public static void bornDate(String bornDateParam) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, bornDate).sendKeys(bornDateParam);
+	}
+	
+	public static void setEmail(String emailString) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, email).sendKeys(emailString);
+	}
+	
+	public static void setphoneNumber(String phone) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, phoneNumber).sendKeys(phone);
+	}
+	
+	public static void setCep(String cepNumber) throws InterruptedException {
+		CommonsWebDriver.sleepAndFindElement(5, cep).sendKeys(cepNumber);
+		Thread.sleep(10000);
+	}
+	
+	public static void nextScreen() {
+		CommonsWebDriver.sleepAndFindElement(5, nextScreenOne).click();
+	}
+	
+	public static void backScreen() {
+		CommonsWebDriver.sleepAndFindElement(5, backScreenOne).click();
+	}
+	
+	public static void unknownCepLink() {
+		CommonsWebDriver.sleepAndFindElement(5, unknownCep).click();
+	}
+	
+}

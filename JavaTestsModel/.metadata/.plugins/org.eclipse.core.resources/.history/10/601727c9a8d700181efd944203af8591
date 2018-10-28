@@ -1,0 +1,15 @@
+users:
+    gdn:
+        nome: 'ana paula negreiros'
+            login: '11232633'
+            password: 'senha123'
+        nome:
+            login: '26454319'
+            password: 'senha123'
+    lider:
+        nome:
+            login:
+            password:
+        nome:
+            login:
+            password:

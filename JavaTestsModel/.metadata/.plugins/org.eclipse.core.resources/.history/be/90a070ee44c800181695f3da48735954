@@ -1,0 +1,67 @@
+package pages;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import commonsMethods.CommonsWebDriver;
+
+
+public class ConsultoriaLoginPages {
+	
+	ChromeDriver DRIVER;
+	static By userLoginField = By.id("username");
+	static By userPasswrdField = By.id("password");
+	static By userSiginButton = By.id("botaoOK");
+	static By firstAccess = By.xpath("a//[contains(text(), 'Primeiro acesso?')]");
+	static By forgotPasswrd = By.xpath("a//[contains(text(), 'Esqueci minha senha')]");
+	static By messageError = By.cssSelector("div[class='alert_login']");
+	
+	public void getUrl(String url) {
+		DRIVER = CommonsWebDriver.instantiateDriver();
+		DRIVER.get(url);
+	}
+	
+	public static void validateWindowTextTitle(String expected) {
+		String actualWindowTitle = DRIVER.getTitle();
+		assertEquals(actualWindowTitle, expected);
+	}
+	
+	public static boolean validateErrorInvalidCredentials() {
+		try {
+			DRIVER.findElement(messageError).isDisplayed();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public static void setLogin(String userName) {
+		DRIVER.findElement(userLoginField).sendKeys(userName);
+	}
+	
+	public static WebElement setPassword(String password) {
+		DRIVER.findElement(userPasswrdField).sendKeys(password);
+		return null;
+	}
+	
+	public static void clickLogin() {
+		DRIVER.findElement(userSiginButton).click();
+	}
+	
+	public static void clickFirstAccess() {
+		DRIVER.findElement(firstAccess).click();
+	}
+	
+	public static void clickForgotPassword() {
+		DRIVER.findElement(forgotPasswrd).click();
+	}
+	
+	@After
+	public static void closeWindow() {
+		DRIVER.quit();
+	}
+}

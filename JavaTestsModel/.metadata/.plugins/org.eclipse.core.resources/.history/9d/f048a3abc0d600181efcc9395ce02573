@@ -1,0 +1,39 @@
+@TelaConsultoria
+Feature: Validacao de elementos em tela
+
+Background: Acessar a aplicação Consultoria
+    Given acesso a pagina principal do app Consultoria
+    And insiro credenciais validas nos campos requeridos
+    And clico no botao Login
+    And a pagina principal e carregada com sucesso
+
+  @TelaConsultoria @ElementosPrincipais
+  Scenario: Elementos principais
+  	When valido o header
+  	And valido a presenca de um slider
+  	And valido o icone de envio de mensagem
+  	Then valido os elementos do footer
+  	And fecho a pagina
+
+  #@TelaConsultoria @Submenus
+  #Scenario: Submenus do menu lateral esquerdo
+  	#When Acesso o menu "Home"
+  	#And valido os submenus do menu "Home"
+  	#And Acesso o menu "Meus Cadastros"
+  	#And valido os submenus do menu "Meus Cadastros"
+  	#And Acesso o menu "Meu Negócio"
+  	#And valido os submenus do menu "Meu Negócio"
+  	#And Acesso o menu "Eventos Natura"
+  	#And valido os submenus do menu "Eventos Natura"
+  	#And Acesso o menu "Pedido"
+  	#And valido os submenus do menu "Pedido"
+  	#And Acesso o menu "Ciclo"
+  	#And valido os submenus do menu "Ciclo"
+  	#And Acesso o menu "Oportunidades"
+  	#And valido os submenus do menu "Oportunidades"
+  	#And Acesso o menu "Minha profissão"
+  	#And valido os submenus do menu "Minha profissão"
+  	#And Acesso o menu "Natura Reconhece"
+  	#And valido os submenus do menu "Natura Reconhece"
+  	#And Acesso o menu "Ajuda"
+  	#And valido os submenus do menu "Ajuda"

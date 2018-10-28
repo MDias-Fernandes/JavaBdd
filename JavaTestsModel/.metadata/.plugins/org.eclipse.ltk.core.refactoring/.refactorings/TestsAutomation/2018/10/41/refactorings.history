@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TestsAutomation/features/ValidacaoFiltrosConsultoria.features&apos; to &apos;ValidacaoFiltrosConsultoria.feature&apos;" description="Rename resource &apos;ValidacaoFiltrosConsultoria.features&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="features/ValidacaoFiltrosConsultoria.features" name="ValidacaoFiltrosConsultoria.feature" stamp="1539267284645" updateReferences="true"/>
+</session>

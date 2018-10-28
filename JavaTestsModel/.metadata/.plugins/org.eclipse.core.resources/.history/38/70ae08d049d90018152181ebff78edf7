@@ -1,0 +1,25 @@
+package actions;
+
+import com.sun.xml.internal.ws.developer.MemberSubmissionEndpointReference.Elements;
+
+import commonsMethods.CommonsWebDriver;
+import pages.*;
+
+public ConsultoriaLoginPages(WebDriver.DRIVER);
+
+public class ConsultoriaLoginActions extends CommonsWebDriver{
+	
+	ConsultoriaLoginPages elements = new ConsultoriaLoginPages();
+	public static void setLogin(String userName) {
+		CommonsWebDriver.sleepAndFindElement(5, elements.userLoginField).sendKeys(userName);
+	}
+	
+	public static void setPassword(String password) {
+		CommonsWebDriver.sleepAndFindElement(1, userPasswrdField).sendKeys(password);
+		CommonsWebDriver.takeScreenShot(1, userPasswrdField);
+	}
+	
+	public static void clickLogin() {
+		CommonsWebDriver.sleepAndFindElement(1, userSiginButton).click();
+	}
+}

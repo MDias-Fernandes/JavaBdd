@@ -1,0 +1,21 @@
+package stepsDefinition;
+
+import actions.ConsultoriaLoginActions;
+import commonsMethods.CommonsWebDriver;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class ConsultoriaLoginInvalido {
+	
+	@When("^insiro credenciais invalidas nos campos requeridos$")
+	public void insiro_credenciais_invalidas_nos_campos_requeridos() throws Throwable {
+	    ConsultoriaLoginActions.setLogin("user9999");
+	    ConsultoriaLoginActions.setPassword("senha999");
+	}
+
+	@Then("^um erro e carregado na tela$")
+	public void um_erro_e_carregado_na_tela() throws Throwable {
+		ConsultoriaLoginActions.validateErrorInvalidCredentials();
+	    CommonsWebDriver.closeWindow();
+	}
+}

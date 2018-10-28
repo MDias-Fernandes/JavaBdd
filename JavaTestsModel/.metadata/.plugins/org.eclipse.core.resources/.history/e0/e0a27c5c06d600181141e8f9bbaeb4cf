@@ -1,0 +1,49 @@
+package pages;
+
+import org.openqa.selenium.By;
+import commonsMethods.*;
+
+public class ConsultoriaLoginPages {
+	
+	static By userLoginField = By.id("username");
+	static By userPasswrdField = By.id("password");
+	static By userSiginButton = By.id("botaoOK");
+	static By firstAccess = By.xpath("a//[contains(text(), 'Primeiro acesso?')]");
+	static By forgotPasswrd = By.xpath("a//[contains(text(), 'Esqueci minha senha')]");
+	static By messageError = By.cssSelector("div[class='alert_login']");
+	
+	public static boolean validateErrorInvalidCredentials() {
+		try {
+			CommonsWebDriver.DRIVER.findElement(messageError).isDisplayed();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public static void setLogin(String userName) {
+		CommonsWebDriver.sleepAndFindElement(5, userLoginField).sendKeys(userName);
+	}
+	
+	public static void setPassword(String password) {
+		CommonsWebDriver.sleepAndFindElement(1, userPasswrdField).sendKeys(password);
+	}
+	
+	public static void clickLogin() {
+		CommonsWebDriver.sleepAndFindElement(1, userSiginButton).click();
+		CommonsWebDriver.takeScreenShot(3, userSiginButton);
+	}
+	
+	public static void clickFirstAccess() {
+		CommonsWebDriver.sleepAndFindElement(1, firstAccess).click();
+	}
+	
+	public static void clickForgotPassword() {
+		CommonsWebDriver.sleepAndFindElement(5, forgotPasswrd).click();
+	}
+	
+	public static void closeWindow() {
+		CommonsWebDriver.closeWindow();
+	}
+}

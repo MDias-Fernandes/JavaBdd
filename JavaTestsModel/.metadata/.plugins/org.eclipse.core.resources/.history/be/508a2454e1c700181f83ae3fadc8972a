@@ -1,0 +1,28 @@
+package pages;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.junit.Before;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CommonsWebDriver {
+	
+	static ChromeDriver DRIVER;
+	
+	@Before
+	public void getUrl(String url) {
+		DRIVER = new ChromeDriver();
+		DRIVER.get(url);
+	}
+	
+	public static void validateWindowTextTitle(String expected) {
+		String actualWindowTitle = DRIVER.getTitle();
+		assertEquals(actualWindowTitle, expected);
+	}
+	
+	@After
+	public static void closeWindow() {
+		DRIVER.quit();
+	}
+}

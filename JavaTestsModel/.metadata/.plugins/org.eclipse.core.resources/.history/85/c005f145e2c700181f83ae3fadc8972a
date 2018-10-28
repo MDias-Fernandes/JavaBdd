@@ -1,0 +1,54 @@
+package stepsDefinition;
+
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pages.*;
+
+public class ConsultoriaCadastro {
+	
+	@When("^clico no botao cadastro$")
+	public void clico_no_botao_cadastro() {
+	    ConsultoriaCadastroPages.newRegister();
+	}
+
+	@When("^insiro um cpf valido$")
+	public void insiro_um_cpf_valido() throws Throwable {
+	    ConsultoriaCadastroPages.setCpf("09313200031");
+	}
+
+	@When("^insiro um nome valido$")
+	public void insiro_um_nome_valido() throws Throwable {
+	    ConsultoriaCadastroPages.setCompleteName("Maria da Silva");
+	}
+
+	@When("^seleciono um genero$")
+	public void seleciono_um_genero() throws Throwable {
+	    ConsultoriaCadastroPages.selectGender();
+	}
+
+	@When("^insiro uma data de nascimento$")
+	public void insiro_uma_data_de_nascimento() throws Throwable {
+	    ConsultoriaCadastroPages.bornDate("01/01/1990");
+	}
+
+	@When("^insiro um email valido$")
+	public void insiro_um_email_valido() throws Throwable {
+	    ConsultoriaCadastroPages.setEmail("mailing100@mailinator.com");
+	}
+
+	@When("^insiro um telefone valido$")
+	public void insiro_um_telefone_valido() throws Throwable {
+	    ConsultoriaCadastroPages.setphoneNumber("(11) 95590-0998");
+	}
+
+	@When("^insiro um CEP comum$")
+	public void insiro_um_CEP_comum() throws Throwable {
+	    ConsultoriaCadastroPages.setCep("02675-031");
+	}
+
+	@Then("^valido estrutura de validacao$")
+	public void valido_estrutura_de_validacao() throws Throwable {
+	    ConsultoriaCadastroPages.waitForValidation();
+	}
+	
+}

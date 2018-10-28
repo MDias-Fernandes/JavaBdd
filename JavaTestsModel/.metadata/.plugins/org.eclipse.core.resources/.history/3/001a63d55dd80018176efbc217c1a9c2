@@ -1,0 +1,23 @@
+package stepsDefinition;
+
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pages.ConsultoriaTelaPrincipalPages;
+
+public class ConsultoriaMenuCadastro {
+	@When("^Acesso o menu Meus Cadastros$")
+	public void acesso_o_menu_Meus_Cadastros() throws Throwable {
+	    ConsultoriaTelaPrincipalPages.myRegisters();
+	}
+
+	@Then("^valido os submenus do menu Meus Cadastros$")
+	public void valido_os_submenus_do_menu_Meus_Cadastros() throws Throwable {
+		ConsultoriaTelaPrincipalPages.submenuSuggestedForStart();
+		ConsultoriaTelaPrincipalPages.submenuWaitForFirstOrder();
+		ConsultoriaTelaPrincipalPages.submenuAllRegisters();
+		ConsultoriaTelaPrincipalPages.submenuInicial();
+		ConsultoriaTelaPrincipalPages.submenuReprovedAbandon();
+		ConsultoriaTelaPrincipalPages.submenuAllRegisters();
+		ConsultoriaTelaPrincipalPages.submenuAllRegisters();		
+	}
+}
