@@ -7,12 +7,23 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 features = "features"
-,glue= {"stepsDefinition",
-		"commonsMethods"
-	   }
-,tags= {//	"@LoginConsultoria"}
-		//	"@CadastroConsultoria"}
-			"@TelaConsultoria"}//,"@MenuMeusCadastros"}//, "@SugeridasParaInicio"}
+
+,glue = 	{	
+			"stepsDefinition",
+			"commonsMethods"
+	   		}
+
+,tags =		{	
+			//"@LoginConsultoria"
+			//"@CadastroConsultoria"
+			"@TelaConsultoria","@MenuMeusCadastros", "@SugeridasParaInicio"
+			}
+
+,plugin =	{
+			"html:target/cucumber-reports"
+			}
+
+,monochrome = true
 )
 
 public class TestRunner {

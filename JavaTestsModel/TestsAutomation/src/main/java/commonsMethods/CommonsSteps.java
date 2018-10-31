@@ -4,14 +4,13 @@ import actions.ConsultoriaLoginActions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dataProviders.ConfigFileReader;
+
 
 public class CommonsSteps {
-
 	@Given("^acesso a pagina principal do app Consultoria$")
 	public void acesso_a_pagina_principal_do_app_Consultoria() throws Throwable {
-		CommonsWebDriver.getUrl("https://consultoriahml.natura.com.br");
-		CommonsWebDriver.validateWindowTextTitle(5, "Natura - Acesso Seguro");
-		// Thread.sleep(10000);
+		CommonsWebDriver.getUrl(ConfigFileReader.environment("dev"));
 	}
 
 	@When("^clico no botao Login$")

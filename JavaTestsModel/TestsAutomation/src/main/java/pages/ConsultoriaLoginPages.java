@@ -1,8 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import commonsMethods.CommonsWebDriver;
 
-public class ConsultoriaLoginPages {
+public class ConsultoriaLoginPages extends CommonsWebDriver {
 	
 	protected static By userLoginField = By.id("username");
 	protected static By userPasswrdField = By.id("password");

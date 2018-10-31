@@ -1,7 +1,7 @@
 package stepsDefinition;
 
+import actions.CloseWindow;
 import actions.ConsultoriaLoginActions;
-import commonsMethods.CommonsWebDriver;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -16,6 +16,6 @@ public class ConsultoriaLoginInvalido {
 	@Then("^um erro e carregado na tela$")
 	public void um_erro_e_carregado_na_tela() throws Throwable {
 		ConsultoriaLoginActions.validateErrorInvalidCredentials();
-	    CommonsWebDriver.closeWindow();
+		CloseWindow.closeWindow();
 	}
 }

@@ -1,7 +1,5 @@
 package commonsMethods;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,23 +8,20 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.ComparisonFailure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CommonsWebDriver {
 	
-	public static ChromeDriver DRIVER;
+	protected static ChromeDriver DRIVER;
 	
-	@Before
-	public static void getUrl(String url) {
+	protected static void getUrl(String url) {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		//options.addArguments("headless");
@@ -35,8 +30,7 @@ public class CommonsWebDriver {
 		DRIVER.get(url);
 	}
 	
-	@After
-	public static void closeWindow() {
+	protected static void closeWindow() {
 		DRIVER.quit();
 	}
 	
@@ -44,7 +38,7 @@ public class CommonsWebDriver {
 	
 	//CommonsMethods
 	//execute a JS script
-	public static void executeJsScript(String scriptToBeExecuted) {
+	protected static void executeJsScript(String scriptToBeExecuted) {
 		if (DRIVER instanceof JavascriptExecutor) {
 		    ((JavascriptExecutor)DRIVER).executeScript(scriptToBeExecuted);
 		} else {
@@ -53,80 +47,64 @@ public class CommonsWebDriver {
 	}
 	
 	//Sleep a while and find ONLY ONE element
-	public static WebElement sleepAndFindElement(int timeForWait, By checkElementVisibility) {
+	protected static WebElement sleepAndFindElement(int timeForWait, By checkElementVisibility) {
 		int counter = 1;
 		WebElement elementFinded = null;
 		while (counter <= timeForWait) {
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				elementFinded = DRIVER.findElement(checkElementVisibility);
-				//WebElement element = DRIVER.findElement(By.id("bmwradio")));
+				System.out.println("ELEMENTO ("+ checkElementVisibility.toString() +") ENCONTRADO NA TENTATIVA: " + counter);
 				break;
 			} catch (Exception error) {
-				System.out.println("ELEMENTO ("+ checkElementVisibility.toString() +") NÃO ENCONTRADO NA TENTATIVA: " + counter);
-				System.out.println(error + "\n");
-				counter = counter + 1;
+				System.out.println("========> ELEMENTO ("+ checkElementVisibility.toString() +") NÃO ENCONTRADO NA TENTATIVA: " + counter);
+				error.getMessage();
+				counter += 1;
 			}
 		}
-		if (elementFinded.equals(null)) {
-			System.out.println("TIMEOUT NA LOCALIZAÇÃO DO ELEMENTO ("+ checkElementVisibility.toString() + ")" + "\n");
-			return null;
+		if (counter > timeForWait) {
+			System.out.println("========> TIMEOUT NA LOCALIZAÇÃO DO ELEMENTO ("+ checkElementVisibility.toString() + ")");
+			takeScreenShot(1, null);
+			closeWindow();
+			TimeoutException timeOut = new TimeoutException();
+			throw timeOut;
 		} else {
-			System.out.println("ELEMENTO ("+ checkElementVisibility.toString() +") ENCONTRADO NA TENTATIVA: " + counter);
 			return elementFinded;
 		}
 	}
 
-	//Current Window Text Title
-	public static void validateWindowTextTitle(int timeForWait, String expected) throws Exception  {
-		int counter = 0;
-		while (counter < timeForWait) {
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				String actualWindowTitle = DRIVER.getTitle();
-				assertEquals(actualWindowTitle, expected);
-				System.out.println("TÍTULO ("+ actualWindowTitle +") IGUAL A: " + expected);
-				break;
-			}
-			catch (ComparisonFailure error) {
-				System.out.println(error.getMessage());
-				counter = counter + 1;
-			}
-		}
-		if (counter == timeForWait) {
-			ComparisonFailure errorComparison = new ComparisonFailure("ERRO NA COMPARAÇÃO DE VALORES!!!", null, null + "\n");
-			throw errorComparison;
-		}
-	}
-
 	//Sleep a while and find AN ARRAY of elements
-	public static List<WebElement> sleepAndFindArrayOfElements(int timeForWait, By checkElementsVisibility) {
+	protected static List<WebElement> sleepAndFindArrayOfElements(int timeForWait, By checkElementsVisibility) {
 		int counter = 1;
 		List<WebElement> elementsFinded = null;
 		while (counter <= timeForWait) {
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				elementsFinded = DRIVER.findElements(checkElementsVisibility);
+				System.out.println("ELEMENTOS ("+ checkElementsVisibility.toString() +") ENCONTRADOS NA TENTATIVA: " + counter);
 				break;
 			} catch (Exception error) {
-				System.out.println("ELEMENTOS ("+ checkElementsVisibility.toString() +") NÃO ENCONTRADOS NA TENTATIVA: " + counter);
-				System.out.println(error + "\n");
-				counter = counter + 1;
+				System.out.println("========> ELEMENTOS ("+ checkElementsVisibility.toString() +") NÃO ENCONTRADOS NA TENTATIVA: " + counter);
+				error.printStackTrace();
+				counter += 1;
 			}
 		}
-		if (elementsFinded.equals(null)) {
-			System.out.println("TIMEOUT NA LOCALIZAÇÃO DOS ELEMENTOS ("+ checkElementsVisibility.toString() + ")" + "\n");
-			return null;
+		if (counter > timeForWait) {
+			System.out.println("========> TIMEOUT NA LOCALIZAÇÃO DOS ELEMENTOS ("+ checkElementsVisibility.toString() +")");
+			takeScreenShot(1, null);
+			closeWindow();
+			TimeoutException timeOut = new TimeoutException();
+			throw timeOut;
 		} else {
 			for ( WebElement allFinded: elementsFinded) {
-				System.out.println("ELEMENTO " + allFinded.toString() + " ENCONTRADO, E SUA VISIBILIDADE É: " + allFinded.isDisplayed());
+				System.out.println("ELEMENTOS " + allFinded.toString() + " COM VISIBILIDADE: " + allFinded.isDisplayed());
 		    }
 			return elementsFinded;
 		}
 	}
 	
 	//Take a screenshot of the screen
-	public static void takeScreenShot(int timeForWait, By elementInstanceBy) {
+	protected static void takeScreenShot(int timeForWait, By elementInstanceBy) {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
 		DateTime dateTime = DateTime.now();
@@ -135,17 +113,26 @@ public class CommonsWebDriver {
 		try {
 			TimeUnit.SECONDS.sleep(timeForWait);
 			
+			if (elementInstanceBy == null) {
+				TakesScreenshot ts = (TakesScreenshot) DRIVER;
+			    File source = ts.getScreenshotAs(OutputType.FILE);
+			    FileUtils.copyFile(source, new File("../ScreenshotsElementByNull/" + dateOfScreenshot + ".png"));
+			    System.out.println("========> SCREENSHOT NA PÁGINA REALIZADO COM SUCESSO!!!!! AVALIAR POSSÍVEL ERRO!!!!!");
+			} else {
+			
 			WebElement elementToBePrinted = DRIVER.findElement(elementInstanceBy);
 			((JavascriptExecutor)DRIVER).executeScript("arguments[0].scrollIntoView();", elementToBePrinted);
-		    
+			
 			TakesScreenshot ts = (TakesScreenshot) DRIVER;
 		    File source = ts.getScreenshotAs(OutputType.FILE);
 		    FileUtils.copyFile(source, new File("../Screenshots/" + dateOfScreenshot + ".png"));
-		    System.out.println("---------> SCREENSHOT NA PÁGINA REALIZADO COM SUCESSO!");
+		    System.out.println("--------> SCREENSHOT NA PÁGINA REALIZADO COM SUCESSO!");
+			}
 		}
 		catch (Exception e) 
 		{
-		    System.out.println("EXCEÇÃO AO REALIZAR UM SCREENSHOT DA PÁGINA: " + e.getMessage() + "\n\n");
+			e.printStackTrace();
+			System.out.println("EXCEÇÃO AO REALIZAR UM SCREENSHOT DA PÁGINA");
 		}
 	}
 

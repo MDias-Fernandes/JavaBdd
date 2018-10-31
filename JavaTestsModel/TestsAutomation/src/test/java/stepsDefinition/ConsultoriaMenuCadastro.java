@@ -1,82 +1,82 @@
 package stepsDefinition;
 
 import cucumber.api.java.en.When;
-import pages.ConsultoriaMenuMeusCadastrosPages;
+import actions.ConsultoriaMenuMeusCadastrosActions;
 
 public class ConsultoriaMenuCadastro {
 	@When("^acesso o menu Meus Cadastros$")
 	public void acesso_o_menu_Meus_Cadastros() throws Throwable {
-	    ConsultoriaMenuMeusCadastrosPages.myRegisters();
+	    ConsultoriaMenuMeusCadastrosActions.myRegisters();
 	}
 	
 	// Sugeridas Para Inicio
 	@When("^valido o submenu Sugeridas para Inicio$")
 	public void valido_o_submenu_Sugeridas_para_Inicio() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuSuggestedForStart();
+		ConsultoriaMenuMeusCadastrosActions.submenuSuggestedForStart();
 	}
 	
 	@When("^o titulo da janela muda para Meus Cadastros$")
 	public void o_titulo_da_janela_muda_para_Meus_Cadastros() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenTitleSuggestedForStart();
+		ConsultoriaMenuMeusCadastrosActions.screenTitleSuggestedForStart();
 	}
 	
 	
 	// Aguardando Primeiro Pedido
 	@When("^valido o submenu Aguardando Primeiro Pedido$")
 	public void valido_o_submenu_Aguardando_Primeiro_Pedido() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuWaitForFirstOrder();
+		ConsultoriaMenuMeusCadastrosActions.submenuWaitForFirstOrder();
 	}
 	
 	@When("^o titulo da janela muda para Aguardando Primeiro Pedido$")
 	public void o_titulo_da_janela_muda_para_Aguardando_Primeiro_Pedido() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenWaitForFirstOrder();
+		ConsultoriaMenuMeusCadastrosActions.screenWaitForFirstOrder();
 	}
 	
 	
 	// Inicios
 	@When("^valido o submenu Inicios$")
 	public void valido_o_submenu_Inicios() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuInicials();
+		ConsultoriaMenuMeusCadastrosActions.submenuInicials();
 	}
 	
 	@When("^o titulo da janela muda para Inicios$")
 	public void o_titulo_da_janela_muda_para_Inicios() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenInicials();
+		ConsultoriaMenuMeusCadastrosActions.screenInicials();
 	}
 	
 	
 	// Reprovados/Desistencias
 	@When("^valido o submenu Reprovados Desistencias$")
 	public void valido_o_submenu_Reprovados_Desistencias() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuReprovedAbandon();
+		ConsultoriaMenuMeusCadastrosActions.submenuReprovedAbandon();
 	}
 	
 	@When("^o titulo da janela muda para Reprovados Desistencias$")
 	public void o_titulo_da_janela_muda_para_Reprovados_Desistencias() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenReprovedAbandon();
+		ConsultoriaMenuMeusCadastrosActions.screenReprovedAbandon();
 	}
 	
 	
 	// Todos os Cadastros
 	@When("^valido o submenu Todos os Cadastros$")
 	public void valido_o_submenu_Todos_os_Cadastros() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuAllRegisters();
+		ConsultoriaMenuMeusCadastrosActions.submenuAllRegisters();
 	}
 	
 	@When("^o titulo da janela muda para Todos os Cadastros$")
 	public void o_titulo_da_janela_muda_para_Todos_os_Cadastros() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenAllRegisters();
+		ConsultoriaMenuMeusCadastrosActions.screenAllRegisters();
 	}
 	
 	
 	// Novo Cadastro
 	@When("^valido o submenu Novo Cadastro$")
 	public void valido_o_submenu_Novo_Cadastro() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.submenuNewRegister();
+		ConsultoriaMenuMeusCadastrosActions.submenuNewRegister();
 	}
 	
 	@When("^o titulo da janela muda para Novo Cadastro$")
 	public void o_titulo_da_janela_muda_para_Novo_Cadastro() throws Throwable {
-		ConsultoriaMenuMeusCadastrosPages.screenNewRegister();
+		ConsultoriaMenuMeusCadastrosActions.screenNewRegister();
 	}
 }

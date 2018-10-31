@@ -8,7 +8,7 @@ public class ConsultoriaCadastro {
 	
 	@When("^clico no botao cadastro$")
 	public void clico_no_botao_cadastro() throws Throwable {
-	    
+		
 	}
 
 	@When("^insiro um cpf valido$")

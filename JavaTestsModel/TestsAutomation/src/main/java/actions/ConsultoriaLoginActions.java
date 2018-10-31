@@ -4,15 +4,17 @@ package actions;
 import commonsMethods.CommonsWebDriver;
 import pages.ConsultoriaLoginPages;
 
-public class ConsultoriaLoginActions extends ConsultoriaLoginPages{
+public class ConsultoriaLoginActions extends ConsultoriaLoginPages {
 
 	public static boolean validateErrorInvalidCredentials() {
 		try {
 			CommonsWebDriver.DRIVER.findElement(messageError).isDisplayed();
+			CommonsWebDriver.takeScreenShot(1, messageError);
 			return true;
 		} catch (Exception e) {
-			System.out.println(e);
-			return false;
+			CommonsWebDriver.takeScreenShot(1, null);
+			CommonsWebDriver.closeWindow();
+			throw e;
 		}
 	}
 	

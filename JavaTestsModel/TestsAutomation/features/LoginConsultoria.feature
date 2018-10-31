@@ -7,8 +7,8 @@ Background:
   @LoginConsultoria @LoginValido
   Scenario: Realizar um login valido 
     When insiro credenciais validas nos campos requeridos
-    And clico no botao Login
-    Then a pagina principal e carregada com sucesso
+    Then clico no botao Login
+    And fecho a pagina
     
   @LoginConsultoria @LoginInvalido
   Scenario: Realizar um login invalido
