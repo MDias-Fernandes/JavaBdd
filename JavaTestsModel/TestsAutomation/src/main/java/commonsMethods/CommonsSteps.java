@@ -10,7 +10,9 @@ import dataProviders.ConfigFileReader;
 public class CommonsSteps {
 	@Given("^acesso a pagina principal do app Consultoria$")
 	public void acesso_a_pagina_principal_do_app_Consultoria() throws Throwable {
-		CommonsWebDriver.getUrl(ConfigFileReader.environment("dev"));
+		CommonsWebDriver.url(ConfigFileReader.environment("hml"));
+		//ConfigFileReader.getDriver("chrome");
+		//ConfigFileReader.getUrl("hml");
 	}
 
 	@When("^clico no botao Login$")

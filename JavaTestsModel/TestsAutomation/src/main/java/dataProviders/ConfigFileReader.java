@@ -8,9 +8,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
+
 import javax.management.RuntimeErrorException;
 
-public class ConfigFileReader {
+import commonsMethods.CommonsWebDriver;
+
+public class ConfigFileReader extends CommonsWebDriver {
 	
 	private static final Path currentRelativePath = Paths.get("");
 	private static final String currentPath = currentRelativePath.toAbsolutePath().toString();
@@ -18,7 +21,7 @@ public class ConfigFileReader {
 	
 	private static Properties properties;
 	
-	public ConfigFileReader(){
+	protected ConfigFileReader(){
 		try {
 			BufferedReader readerProperties = new BufferedReader(new FileReader(propertyFilePath));
 			properties = new Properties();
@@ -37,11 +40,11 @@ public class ConfigFileReader {
 	//AMBIENTE
 	public static String environment(String environment) {
 		new ConfigFileReader();
-		String attribute = properties.getProperty("url_"+environment+"_fv");
+		String attribute = properties.getProperty(environment);
 		if (attribute!= null) {
 			return attribute;
 		} else {
-			throw new RuntimeErrorException(null, "ATRIBUTO (url_"+environment+"_fv) NÃO DEFINIDO NO ARQUIVO Configuration.properties");
+			throw new RuntimeErrorException(null, "ATRIBUTO ("+ environment +") NÃO DEFINIDO NO ARQUIVO Configuration.properties");
 		}
 	}
 	
@@ -66,5 +69,25 @@ public class ConfigFileReader {
 			throw new RuntimeErrorException(null, "ATRIBUTO (senha_"+profile+"_"+position+") NÃO DEFINIDO NO ARQUIVO Configuration.properties");
 		}
 	}
-		
+	
+	//DRIVER
+	protected static void getDriver(String driver) {
+		new ConfigFileReader();
+		String attribute = properties.getProperty(driver);
+		if (attribute == null) {
+			throw new RuntimeErrorException(null, "ATRIBUTO ("+ driver +") NÃO DEFINIDO NO ARQUIVO Configuration.properties");
+		}
+		driver(attribute);
+	}
+	
+	//URL's
+	protected static void getUrl(String url) {
+		new ConfigFileReader();
+		String attribute = properties.getProperty(url);
+		if (attribute == null) {
+			throw new RuntimeErrorException(null, "ATRIBUTO ("+ url +") NÃO DEFINIDO NO ARQUIVO Configuration.properties");
+		}
+		url(attribute);
+	}
+
 }

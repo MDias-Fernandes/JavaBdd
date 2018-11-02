@@ -11,10 +11,10 @@ public class ConsultoriaLoginActions extends ConsultoriaLoginPages {
 			CommonsWebDriver.DRIVER.findElement(messageError).isDisplayed();
 			CommonsWebDriver.takeScreenShot(1, messageError);
 			return true;
-		} catch (Exception e) {
+		} catch (Exception error) {
 			CommonsWebDriver.takeScreenShot(1, null);
 			CommonsWebDriver.closeWindow();
-			throw e;
+			throw error;
 		}
 	}
 	

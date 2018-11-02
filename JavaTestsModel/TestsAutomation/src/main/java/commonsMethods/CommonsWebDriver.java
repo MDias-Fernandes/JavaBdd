@@ -9,24 +9,39 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class CommonsWebDriver {
 	
-	protected static ChromeDriver DRIVER;
+	protected static WebDriver DRIVER;
 	
-	protected static void getUrl(String url) {
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--start-maximized");
-		//options.addArguments("headless");
-		//options.addArguments("window-size=1200x600");
-		DRIVER = new ChromeDriver(options);
+	protected static void driver(String driver) {
+		switch (driver) {
+		case "chrome":
+			ChromeOptions optionsChrome = new ChromeOptions();
+			optionsChrome.addArguments("--start-maximized");
+			DRIVER = new ChromeDriver(optionsChrome);
+		case "firefox":
+			FirefoxOptions optionsFirefox = new FirefoxOptions();
+			optionsFirefox.addArguments("--start-maximized");
+			DRIVER = new FirefoxDriver(optionsFirefox);
+		}
+	}
+	
+	protected static void url(String url) {
+		ChromeOptions optionsChrome = new ChromeOptions();
+		optionsChrome.addArguments("--start-maximized");
+		DRIVER = new ChromeDriver(optionsChrome);
 		DRIVER.get(url);
 	}
 	
@@ -54,7 +69,12 @@ public class CommonsWebDriver {
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				elementFinded = DRIVER.findElement(checkElementVisibility);
-				System.out.println("ELEMENTO ("+ checkElementVisibility.toString() +") ENCONTRADO NA TENTATIVA: " + counter);
+					if (elementFinded.isDisplayed() == true) {
+						System.out.println("ELEMENTO ("+ checkElementVisibility.toString() +") ENCONTRADO NA TENTATIVA: " + counter);
+					} else {
+						ElementNotVisibleException elementNotDisplayed = new ElementNotVisibleException(null);
+						throw elementNotDisplayed;
+					}
 				break;
 			} catch (Exception error) {
 				System.out.println("========> ELEMENTO ("+ checkElementVisibility.toString() +") NÃO ENCONTRADO NA TENTATIVA: " + counter);

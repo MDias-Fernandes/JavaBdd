@@ -38,15 +38,15 @@ formatter.match({
   "location": "CommonsSteps.acesso_a_pagina_principal_do_app_Consultoria()"
 });
 formatter.result({
-  "duration": 5360013373,
+  "duration": 120403350366,
   "status": "passed"
 });
 formatter.match({
   "location": "ConsultoriaLogin.insiro_credenciais_validas_nos_campos_requeridos()"
 });
 formatter.result({
-  "duration": 8598003088,
-  "error_message": "org.openqa.selenium.TimeoutException: Build info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027SAO-6X5Y9R2\u0027, ip: \u0027192.168.22.1\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u00271.8.0_181\u0027\nDriver info: driver.version: CommonsWebDriver\r\n\tat commonsMethods.CommonsWebDriver.sleepAndFindElement(CommonsWebDriver.java:69)\r\n\tat actions.ConsultoriaLoginActions.setLogin(ConsultoriaLoginActions.java:22)\r\n\tat stepsDefinition.ConsultoriaLogin.insiro_credenciais_validas_nos_campos_requeridos(ConsultoriaLogin.java:11)\r\n\tat ✽.And insiro credenciais validas nos campos requeridos(ValidacaoElementosConsultoria.feature:6)\r\n",
+  "duration": 6647704989,
+  "error_message": "org.openqa.selenium.TimeoutException: Build info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027SAO-6X5Y9R2\u0027, ip: \u0027172.16.17.212\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u00271.8.0_181\u0027\nDriver info: driver.version: CommonsWebDriver\r\n\tat commonsMethods.CommonsWebDriver.sleepAndFindElement(CommonsWebDriver.java:89)\r\n\tat actions.ConsultoriaLoginActions.setLogin(ConsultoriaLoginActions.java:22)\r\n\tat stepsDefinition.ConsultoriaLogin.insiro_credenciais_validas_nos_campos_requeridos(ConsultoriaLogin.java:11)\r\n\tat ✽.And insiro credenciais validas nos campos requeridos(ValidacaoElementosConsultoria.feature:6)\r\n",
   "status": "failed"
 });
 formatter.match({
